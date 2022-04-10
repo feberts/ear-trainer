@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <title>Interval Ear Trainer</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <link rel="stylesheet" href="./interval_ear_trainer.css">
+        <script src="./interval_ear_trainer.js"></script>
+    </head>
+    <body>
+        <center>
+            <h1>Interval Ear Trainer</h1>
+            <img src="./clef.png" alt="">
+            <!-- central VUE instance: -->
+            <div id="IntervalTrainerVue">
+                <!-- button list for entering intervals: -->
+                <ul>
+                    <li
+                        is="IntervalButtonComponent"
+                        v-for="interval in intervals"
+                        v-bind:key="interval.halfSteps"
+                        v-bind:name="interval.name"
+                        v-bind:half_steps="interval.halfSteps"
+                    ></li>
+                </ul>
+                <!-- play-again button: -->
+                <button
+                    id="play_again_button"
+                    v-on:click="playCurrentInterval"
+                    v-bind:style="{ 'background-color': feedbackColor }"
+                >play again</button>
+                <!-- current score: -->
+                <p>{{scoreText}}</p>
+            </div>
+        </center>
+    </body>
+</html>

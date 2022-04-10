@@ -1,0 +1,64 @@
+*
+{
+    font-family: sans-serif;
+    font-variant: small-caps;
+}
+
+body
+{
+    font-size: 100%;
+}
+
+ul
+{
+    list-style-type: none;
+    padding: 0;
+}
+
+img
+{
+    width: 150px;
+    height: auto;
+}
+
+img:hover
+{
+    transform: scaleX(-1);
+}
+
+#interval_button
+{
+    width: 250px;
+    background-color: black;
+    color: white;
+    padding: 5px 5px;
+    font-size: 1.2em;
+    border: 3px solid white;
+    border-radius: 15px;
+}
+
+#interval_button:hover
+{
+    background-color: gray;
+}
+
+#play_again_button
+{
+    width: 244px;
+    padding: 4px 5px;
+    font-size: 1.0em;
+    border: 3px solid black;
+    border-radius: 12px;
+    margin-top: -10px;
+    margin-left: 3px;
+}
+
+#play_again_button:hover
+{
+    border: 3px solid gray;
+}
+
+#front_img
+{
+    width: 180px;
+}
