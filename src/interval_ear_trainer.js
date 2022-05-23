@@ -1,14 +1,14 @@
 /*
- * COMPONENT: IntervalButtonComponent
+ * COMPONENT: interval-button-component
  *
  * DESCRIPTION: Button for entering an interval.
  *              The input is passed on to the VUE instance.
  */
-Vue.component('IntervalButtonComponent',
+Vue.component('interval-button-component',
 {
     template: '\
         <li>\
-            <button id="interval_button" v-on:click="buttonIntervalClicked">\
+            <button class="interval_button" v-on:click="buttonIntervalClicked">\
                 {{name}}\
             </button>\
         </li>\
@@ -53,7 +53,7 @@ window.onload = function()
              * Array of intervals to be queried. Mapping of the half steps to
              * the interval names. The indices of the array correlate with the
              * `halfSteps` attribute. This is used as a key when binding with
-             * the `IntervalButtonComponent` component.
+             * the `interval-button-component` component.
              */
             intervals:
             [

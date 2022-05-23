@@ -1,3 +1,9 @@
+html
+{
+    position: relative;
+    min-height: 100%;
+}
+
 *
 {
     font-family: sans-serif;
@@ -6,7 +12,10 @@
 
 body
 {
+    text-align: center;
     font-size: 100%;
+    margin-bottom: 2em; /* = footer height */
+    padding-bottom: 10px;
 }
 
 ul
@@ -26,7 +35,7 @@ img:hover
     transform: scaleX(-1);
 }
 
-#interval_button
+.interval_button
 {
     width: 250px;
     background-color: black;
@@ -37,7 +46,7 @@ img:hover
     border-radius: 15px;
 }
 
-#interval_button:hover
+.interval_button:hover
 {
     background-color: gray;
 }
@@ -61,4 +70,21 @@ img:hover
 #front_img
 {
     width: 180px;
+}
+
+footer
+{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2em;
+    width: 100%;
+    overflow: hidden;
+}
+
+a
+{
+    color: grey;
+    text-decoration:none;
+    font-variant: normal;
 }
