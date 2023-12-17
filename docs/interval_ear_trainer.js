@@ -1,8 +1,5 @@
 /*
- * COMPONENT: interval-button-component
- *
- * DESCRIPTION: Button for entering an interval.
- *              The input is passed on to the VUE instance.
+ * Button for entering an interval.
  */
 Vue.component('interval-button-component',
 {
@@ -19,9 +16,7 @@ Vue.component('interval-button-component',
     methods:
     {
         /*
-         * FUNCTION: buttonIntervalClicked
-         *
-         * DESCRIPTION: Passing on the entered interval to the VUE instance.
+         * Passing the entered interval to the VUE instance.
          */
         buttonIntervalClicked: function()
         {
@@ -31,17 +26,14 @@ Vue.component('interval-button-component',
     }
 })
 
-var intervalTrainerApp // central VUE instance
+var intervalTrainerApp // VUE instance
 
 window.onload = function()
 {
     console.log('loading window')
 
     /*
-     * VUE-INSTANCE: IntervalTrainerVue
-     *
-     * DESCRIPTION: Central VUE instance.
-     *              Implementation of the application logic.
+     * VUE instance. Implementation of the application logic.
      */
     intervalTrainerApp = new Vue(
     {
@@ -50,10 +42,7 @@ window.onload = function()
         data:
         {
             /*
-             * Array of intervals to be queried. Mapping of the half steps to
-             * the interval names. The indices of the array correlate with the
-             * `halfSteps` attribute. This is used as a key when binding with
-             * the `interval-button-component` component.
+             * Intervals to be played. Mapping half steps to interval names.
              */
             intervals:
             [
@@ -88,16 +77,13 @@ window.onload = function()
         },
 
         /*
-         * FUNCTION: created
-         *
-         * DESCRIPTION: Called automatically after initialization of the VUE
-         *              instance. Causes the creation and playback of the first
-         *              interval.
+         * Called automatically after initialization of the VUE instance.
+         * Causes playback of the first interval.
          */
         created: function()
         {
             console.log('created IntervalTrainerVue')
-            // window.alert("Start"); // for Chrome autoplay policy
+            // window.alert("Start");
 
             this.newInterval()
             this.playCurrentInterval()
@@ -106,10 +92,8 @@ window.onload = function()
         methods:
         {
             /*
-             * FUNCTION: newInterval
-             *
-             * DESCRIPTION: Randomly generates a new root note and picks a
-             *              pseudo random interval from a list.
+             * Randomly generates a new root note and then picks a random
+             * interval from the list.
              */
             newInterval: function()
             {
@@ -142,15 +126,11 @@ window.onload = function()
             },
 
             /*
-             * FUNCTION: evaluateAnswer
+             * Verification of the given answer. If successful, a new interval
+             * is generated and played. Otherwise the current interval is played
+             * again.
              *
-             * DESCRIPTION: Verification of the given answer. If successful, a
-             *              new interval is generated and played. Otherwise the
-             *              current interval is played again.
-             *
-             * PARAMETER:
-             *
-             *   halfSteps: Interval entered by the user in half steps.
+             * halfSteps: interval entered by the user (in half steps)
              */
             evaluateAnswer: function(halfSteps)
             {
@@ -178,10 +158,7 @@ window.onload = function()
             },
 
             /*
-             * FUNCTION: playCurrentInterval
-             *
-             * DESCRIPTION: Audio output of the current interval using
-             *              the Mozilla Web Audio API.
+             * Audio output of the current interval using the Mozilla Web Audio API.
              */
             playCurrentInterval: function()
             {
@@ -190,18 +167,14 @@ window.onload = function()
                 // ========== local functions ==========
 
                 /*
-                 * FUNCTION: noteToFrequency
+                 * Calculation of the frequency of a tone. The reference tone is
+                 * concert pitch a = 440 Hz. The frequencies are calculated on
+                 * the basis of equal temperament.
                  *
-                 * DESCRIPTION: Calculation of the frequency of a tone. The reference
-                 *              tone is the concert pitch a = 440 Hz. The frequencies
-                 *              are calculated on the basis of equal temperament.
+                 * note: deviation from the reference tone in semitone steps.
+                 *       example: 0 = a, 2 = b, -1 = g#
                  *
-                 * PARAMETER:
-                 *
-                 *   note: Deviation from the reference tone in semitone steps.
-                 *         Example: 0 = a, 2 = b, -1 = g#
-                 *
-                 * RETURNS: The frequency in Hz
+                 * returns the frequency (Hz)
                  */
                 function noteToFrequency(note)
                 {
@@ -209,56 +182,47 @@ window.onload = function()
                 }
 
                 /*
-                 * FUNCTION: waveFunction
+                 * Generate a piano sound by additively combining different waveforms.
                  *
-                 * DESCRIPTION: Generate a piano sound by additively combining
-                 *              different waveforms.
+                 * sampleNumber: position of the sample on the horizontal axis (comparable to time)
+                 * frequency: fundamental frequency (Hz) of the tone to be played
                  *
-                 * PARAMETER:
-                 *
-                 *   sampleNumber: Position of the sample on the horizontal
-                 *                 axis (comparable to time)
-                 *   frequency:    The fundamental frequency of the tone to be
-                 *                 played in Hz
-                 *
-                 * RETURNS: Value of the calculated sample at position `sampleNumber`
+                 * returns the value of the calculated sample at position sampleNumber
                  */
                 function waveFunction(sampleNumber, frequency)
                 {
-                    // Make sure the frequency correlates with the actual sampling rate:
+                    // make sure the frequency correlates with the actual sampling rate:
                     const f = frequency / audioContext.sampleRate
 
-                    // Angular frequency w (small omega):
+                    // angular frequency w (small omega):
                     const w = 2 * Math.PI * f
 
-                    // Function to make the sound gradually decay:
+                    // function to make the sound gradually decay:
                     const decayFunction = Math.exp(-0.001 * w * sampleNumber)
 
-                    // Sine function for the fundamental tone:
+                    // sine function for the fundamental tone:
                     var sample = Math.sin(1 * w * sampleNumber) * decayFunction
 
-                    // Add harmonics (with graduated volume):
+                    // add harmonics (with graduated volume):
                     sample += Math.sin(2 * w * sampleNumber) * decayFunction / 2
                     sample += Math.sin(3 * w * sampleNumber) * decayFunction / 4
                     sample += Math.sin(4 * w * sampleNumber) * decayFunction / 8
                     sample += Math.sin(5 * w * sampleNumber) * decayFunction / 16
                     sample += Math.sin(6 * w * sampleNumber) * decayFunction / 32
 
-                    // Make the sound a little "richer":
+                    // make the sound a little "richer":
                     sample += sample * sample * sample
 
-                    // Raise volume briefly at the beginning (piano keystroke):
+                    // raise volume briefly at the beginning (piano keystroke):
                     sample *= 1 + 16 * sampleNumber * Math.exp(-6 * sampleNumber)
 
                     return sample
                 }
 
                 /*
-                 * FUNCTION: playSamplesArray
+                 * audio output of a sample array.
                  *
-                 * DESCRIPTION: Audio output of a sample array
-                 *
-                 * PARAMETER: sampleArray: Array with samples
+                 * sampleArray: array with samples
                  */
                 function playSamplesArray(sampleArray)
                 {
@@ -275,7 +239,7 @@ window.onload = function()
                     if(this.bufferSource != null)
                     {
                         this.bufferSource.stop(0)
-                        // Stop current audio output, if any, to prevent overlapping.
+                        // stop current audio output, if any, to prevent overlapping with new interval
                     }
 
                     this.bufferSource = audioContext.createBufferSource()
@@ -284,17 +248,17 @@ window.onload = function()
                     this.bufferSource.start(0)
                 }
 
-                // ========== Creating an audio context ==========
+                // ========== creating an audio context ==========
 
                 window.AudioContext = window.AudioContext || window.webkitAudioContext
                 var audioContext = new AudioContext()
 
-                // ========== Creating and playing the sample array ==========
+                // ========== creating and playing the sample array ==========
 
                 var sampleArray = []
-                const volume = 0.25 // factor for amplitude; don't set too high to prevent distortion
+                const volume = 0.25 // factor for amplitude; don't set too high to prevent distortion caused by clipping
 
-                // Create the fundamental tone:
+                // create the fundamental tone:
 
                 var noteDuration = 1.5 // duration in s
                 const nSamplesFirstNote = audioContext.sampleRate * noteDuration // offset for the interval tone
@@ -305,7 +269,7 @@ window.onload = function()
                     sampleArray[sampleNumber] = waveFunction(sampleNumber, frequency) * volume
                 }
 
-                // Create the interval tone:
+                // create the interval tone:
 
                 noteDuration = 5.0
                 const nSamplesSecondNote = audioContext.sampleRate * noteDuration
@@ -315,8 +279,8 @@ window.onload = function()
                 {
                     sampleArray[sampleNumber + nSamplesFirstNote] = waveFunction(sampleNumber, frequency) * volume
 
-                    // Both samples/notes are written into the same array with
-                    // `nSamplesFirstNote` serving as the offset for the second note.
+                    // both samples/notes are written into the same array with
+                    // nSamplesFirstNote serving as the offset for the second note.
                 }
 
                 playSamplesArray(sampleArray)
