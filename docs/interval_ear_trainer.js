@@ -16,7 +16,7 @@ Vue.component('interval-button-component',
     methods:
     {
         /*
-         * Passing the entered interval to the VUE instance.
+         * Passing the entered interval to the Vue instance.
          */
         buttonIntervalClicked: function()
         {
@@ -26,14 +26,14 @@ Vue.component('interval-button-component',
     }
 })
 
-var intervalTrainerApp // VUE instance
+var intervalTrainerApp // Vue instance
 
 window.onload = function()
 {
     console.log('loading window')
 
     /*
-     * VUE instance. Implementation of the application logic.
+     * Vue instance. Implementation of the application logic.
      */
     intervalTrainerApp = new Vue(
     {
@@ -77,22 +77,33 @@ window.onload = function()
         },
 
         /*
-         * Called automatically after initialization of the VUE instance.
-         * Causes playback of the first interval.
+         * Called automatically after initialization of the Vue instance.
+         * Picks the first interval to be played.
          */
         created: function()
         {
             console.log('created IntervalTrainerVue')
-            // window.alert("Start");
 
             this.newInterval()
-            this.playCurrentInterval()
         },
 
         methods:
         {
             /*
-             * Randomly generates a new root note and then picks a random
+             * Removes start button, displays controls and plays first interval.
+             */
+            start: function()
+            {
+                console.log('starting')
+
+                document.getElementById("start_button").remove();
+                document.getElementById("controls").style.display = "block";
+
+                this.playCurrentInterval()
+            },
+
+            /*
+             * Randomly chooses a new root note and then picks a random
              * interval from the list.
              */
             newInterval: function()
@@ -108,7 +119,7 @@ window.onload = function()
                     }
                 }
 
-                // pick a pseudo random interval from the list of remaining intervals:
+                // pick a random interval from the list of remaining intervals:
                 let randomIndex = Math.floor(Math.random() * this.randomIntervals.length);
                 this.currentInterval = this.randomIntervals[randomIndex]
                 this.randomIntervals.splice(randomIndex, 1);

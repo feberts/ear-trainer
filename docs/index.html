@@ -11,26 +11,30 @@
     <body>
         <h1>Interval Ear Trainer</h1>
         <img src="./clef.svg" alt="">
-        <!-- central VUE instance: -->
+        <!-- central Vue instance: -->
         <div id="IntervalTrainerVue">
-            <!-- button list for entering intervals: -->
-            <ul>
-                <li
-                    is="interval-button-component"
-                    v-for="interval in intervals"
-                    v-bind:key="interval.halfSteps"
-                    v-bind:name="interval.name"
-                    v-bind:half_steps="interval.halfSteps"
-                ></li>
-            </ul>
-            <!-- play-again button: -->
-            <button
-                id="play_again_button"
-                v-on:click="playCurrentInterval"
-                v-bind:style="{ 'background-color': feedbackColor }"
-            >play again</button>
-            <!-- current score: -->
-            <p>{{scoreText}}</p>
+            <!-- start button: -->
+            <button id="start_button" v-on:click="start">Start</button>
+            <div id="controls">
+                <!-- button list for entering intervals: -->
+                <ul>
+                    <li
+                        is="interval-button-component"
+                        v-for="interval in intervals"
+                        v-bind:key="interval.halfSteps"
+                        v-bind:name="interval.name"
+                        v-bind:half_steps="interval.halfSteps"
+                    ></li>
+                </ul>
+                <!-- play-again button: -->
+                <button
+                    id="play_again_button"
+                    v-on:click="playCurrentInterval"
+                    v-bind:style="{ 'background-color': feedbackColor }"
+                >play again</button>
+                <!-- current score: -->
+                <p>{{scoreText}}</p>
+            </div>
         </div>
         <footer>
             <a href="https://github.com/feberts/Additive-sound-synthesis">GitHub</a>

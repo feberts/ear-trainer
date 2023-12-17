@@ -35,6 +35,11 @@ img:hover
     transform: scaleX(-1);
 }
 
+#controls
+{
+    display: none;
+}
+
 .interval_button
 {
     width: 250px;
@@ -44,6 +49,7 @@ img:hover
     font-size: 1.2em;
     border: 3px solid white;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .interval_button:hover
@@ -51,7 +57,7 @@ img:hover
     background-color: gray;
 }
 
-#play_again_button
+#play_again_button, #start_button
 {
     width: 244px;
     padding: 4px 5px;
@@ -60,11 +66,23 @@ img:hover
     border-radius: 12px;
     margin-top: -10px;
     margin-left: 3px;
+    cursor: pointer;
+}
+
+#start_button
+{
+    margin-top: 25px;
+    background-color: white;
 }
 
 #play_again_button:hover
 {
     border: 3px solid gray;
+}
+
+#start_button:hover
+{
+    background-color: lightgreen;
 }
 
 #front_img
