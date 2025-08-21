@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
    version="1.0"
-   width="114.09375"
-   height="114.09375"
-   id="svg2">
+   width="121.51145"
+   height="121.51145"
+   id="svg2"
+   sodipodi:docname="icon.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview10"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="4.5924174"
+     inkscape:cx="21.339524"
+     inkscape:cy="55.199686"
+     inkscape:window-width="1920"
+     inkscape:window-height="1010"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
   <metadata
      id="metadata17">
     <rdf:RDF>
@@ -17,7 +40,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -31,18 +54,22 @@
        id="Arrow1Mstart">
       <path
          d="M 0,0 0.7,-1.3 -4,0 0.7,1.3 Z"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;marker-start:none"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
          id="path3845" />
     </marker>
   </defs>
-  <g
-     id="g1"
-     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart)"
-     transform="translate(-16.633647,-7.28125)" />
+  <rect
+     style="fill:#ffffff"
+     id="rect220"
+     width="121.51145"
+     height="121.51145"
+     x="0"
+     y="0"
+     ry="28.620651" />
   <g
      id="g2"
      style="fill:#000000;fill-opacity:1;stroke:none"
-     transform="translate(-2.1283976,-7.28125)">
+     transform="translate(2.9096874,-5.4885173)">
     <path
        d="m 58.5625,7.28125 v 86.625 c -2.321708,-2.855152 -6.195845,-4.437501 -11.21875,-4.4375 -11.555201,0 -21.656249,9.493425 -21.65625,19.9375 0,7.9871 5.377057,11.96875 13.65625,11.96875 12.495147,0 21.601232,-9.79551 21.65625,-19.875 1.67e-4,-0.0306 0,-0.0632 0,-0.0937 V 31.3125 c 12.3039,6.449757 21.164464,12.88141 25.9375,22.21875 4.832911,9.454482 1.775129,22.5445 -11.375,34.5 -0.336877,1.244071 0.206297,1.88547 1.15625,1.84375 C 100.05919,69.824202 96.283715,44.69325 75.0625,27.40625 68.147192,21.772979 63.115006,14.24255 61,7.28125 Z"
        id="path1883" />
