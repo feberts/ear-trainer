@@ -125,7 +125,9 @@ window.onload = function()
                 this.randomIntervals.splice(randomIndex, 1);
 
                 // generate a random root note:
-                this.currentRootNote = Math.floor(Math.random() * 25) - 24 // [-24..0] = 2 octaves
+                let rootNoteLowest = -24; // relative to reference note (440 Hz), half steps
+                let rootNoteRange = 24; // range from which to pick root notes, half steps
+                this.currentRootNote = Math.floor(Math.random() * rootNoteRange) + rootNoteLowest
 
                 // update score:
                 this.scoreText = 'Score: ' + this.scoreCorrect + '/' + this.scoreTotal
