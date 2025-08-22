@@ -1,7 +1,7 @@
-## Additive sound synthesis
+## Ear Trainer
 
-This web application demonstrates the artificial generation of a piano sound using [additive sound synthesis](https://en.wikipedia.org/wiki/Additive_synthesis) and [envelopes](https://en.wikipedia.org/wiki/Envelope_(music)). Implemented with *Vue.js*, *JavaScript* and the *Mozilla Web Audio API*.
+This web application has been developed for ear training. Intervals are played, which then have to be identified by ear.
 
-The demo application can be run [here](https://feberts.github.io/Additive-sound-synthesis/). It's an interval ear trainer.
+A piano sound is artificially generated using [additive sound synthesis](https://en.wikipedia.org/wiki/Additive_synthesis) and [envelopes](https://en.wikipedia.org/wiki/Envelope_(music)). The application is implemented with *Vue.js* and the *Mozilla Web Audio API*.
 
-The PDF (German) describes the mathematical principles and some aspects of the implementation.
+The application can be run [here](https://feberts.github.io/ear-trainer/).
